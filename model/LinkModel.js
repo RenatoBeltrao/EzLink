@@ -1,9 +1,10 @@
 import { Sequelize, DataTypes } from "sequelize";
 import sequelize from '../database/database.js'
 
-const Link = sequelize.define('Link',{
+export const Link = sequelize.define('Link',{
     id: {
         type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
         primaryKey: true
     },
     shortCode:{
@@ -11,7 +12,7 @@ const Link = sequelize.define('Link',{
         allowNull:false,
         unique: true
     },
-    originalURL:{
+    Url:{
         type: DataTypes.TEXT,
         allowNull:false,
         validate:{
@@ -23,5 +24,10 @@ const Link = sequelize.define('Link',{
         defaultValue: 0,
         allowNull:false
     }
+    
 
+},{
+    timestamps: true,
+    createdAt: 'criado_em',
+    updatedAt: 'atualizado_em'
 })

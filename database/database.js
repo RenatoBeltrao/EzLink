@@ -2,14 +2,14 @@ import {randomBytes} from 'crypto'
 import { Sequelize } from 'sequelize'
 import 'dotenv/config'
 
-const sequelize = new Sequelize
+export const sequelize = new Sequelize
 (
-    process.env.database,
-    process.env.username,
-    process.env.password,
+    process.env.database_db,
+    process.env.username_db,
+    process.env.password_db,
     {
     host: "localhost",
     dialect:"postgres",
-    port: process.env.port
+    port: Number(process.env.port_db)
 })
 

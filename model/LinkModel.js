@@ -1,5 +1,5 @@
 import { Sequelize, DataTypes } from "sequelize";
-import sequelize from '../database/database.js'
+import {sequelize} from '../database/database.js'
 
 export const Link = sequelize.define('Link',{
     id: {

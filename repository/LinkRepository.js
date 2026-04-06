@@ -15,11 +15,13 @@ export const LinkRepository = {
         )
         return linkAntigo
     },
+
     async deleteLink(id){
         const result = await Link.destroy({
             where: { id }
         }) 
     },
+    
     async listLinks(){
         const links = await Link.findAll()
         return links

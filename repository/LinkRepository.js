@@ -5,18 +5,22 @@ export const LinkRepository = {
     async createLink(link){
         return await Link.create(link);
     },
-    async updateLink(newURL,id){
+    async updateShortCode(newShortCode,id){
         const linkAntigo = await Link.findByPk(id)
         if(!linkAntigo){
-        throw new Error('Link não encontrado.')
+        throw new Error('Link/id não encontrado.')
         }
             await linkAntigo.update(
-            {Url: newURL}
+            {shortCode: newShortCode}
         )
         return linkAntigo
     },
 
     async deleteLink(id){
+        const link = await Link.findByPk(id)
+        if(!link){
+            throw new Error('Link/id não encontrado.')
+        }
         const result = await Link.destroy({
             where: { id }
         }) 

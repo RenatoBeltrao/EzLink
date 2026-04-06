@@ -14,17 +14,30 @@ export const LinkController = {
     },
     async updateLink(request, reply){
         try{
-            const {id,link} = request.body
-            const result = await LinkService.updateLink(id,link)
+            const {newShortCode} = request.body
+            const id = request.params.id
+            const result = await LinkService.updateLink(newShortCode,id)
+            reply.status(200).send(result)
         }catch(e){
-            reply.status(400).send(e.message)
+            reply.status(404).send(e.message)
         }
     },
-    async deleteLink(id){
-        return await LinkRepository.deleteLink(id)
+    async deleteLink(request, reply){
+        try{
+        const id = request.params.id
+        const result = await LinkService.deleteLink(id)
+        reply.status(200).send(result)
+        }catch(e){
+        reply.status(400).send(e.message)
+        }
     },
-    async listLinks(){
-        return await LinkRepository.listLinks()
+    async listLinks(request, reply){
+        try{
+            const result = await LinkService.listLinks()
+            reply.status(200).send(result)
+        }catch(e){
+            return reply.status(400).send(e.message)
+        }
     }
 
 

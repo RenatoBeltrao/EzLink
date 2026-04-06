@@ -12,7 +12,7 @@ export const Link = sequelize.define('Link',{
         allowNull:false,
         unique: true
     },
-    Url:{
+    url:{
         type: DataTypes.TEXT,
         allowNull:false,
         validate:{

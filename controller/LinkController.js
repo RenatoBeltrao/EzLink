@@ -38,6 +38,15 @@ export const LinkController = {
         }catch(e){
             return reply.status(400).send(e.message)
         }
+    },
+    async accessLink(request,reply){
+        const shortCode = request.params.shortCode
+        try{
+            const link = await LinkService.accessLink(shortCode)
+            reply.status(200).send(link)
+        }catch(e){
+            reply.status(404).send(e.message)
+        }
     }
 
 

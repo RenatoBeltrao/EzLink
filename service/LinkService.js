@@ -14,8 +14,10 @@ export const LinkService = {
         return await LinkRepository.deleteLink(id)
     },
     async listLinks(){
-        console.log("passei aqui")
         return await LinkRepository.listLinks()
-    }
+    },
+    async accessLink(shortCode){
+        return await LinkRepository.accessLink(shortCode)
+    }   
     
 }

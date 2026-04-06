@@ -29,6 +29,15 @@ export const LinkRepository = {
     async listLinks(){
         const links = await Link.findAll()
         return links
+    },
+
+    async accessLink(shortCode){
+        const link = await Link.findOne({ where : { shortCode : shortCode } })
+        if(link){
+            await link.increment('clicks')
+            return link.url
+        }
+        throw new Error("Link não encontrado")
     }
     
 

@@ -33,6 +33,17 @@ Antes de começar, você vai precisar ter instalado em sua máquina:
 
 ## 🔧 Instalação e Execução
 
+### IMPORTANTE!!
+
+   Sugestão de configuração para o .env:
+
+    port_db=Porta_do_db
+    database_db=EasyLink
+    username_db=seu_usuario
+    password_db=sua_senha
+
+   Este banco ja deve existir ou deve ser criado antes de executar o passo 4.
+
 1. Clone o repositório:
 
    git clone https://github.com/RenatoBeltrao/EzLink
@@ -42,22 +53,17 @@ Antes de começar, você vai precisar ter instalado em sua máquina:
    npm install
 
 3. Configure o Banco de Dados:
+
    Certifique-se de que as credenciais no seu arquivo de conexão (ou .env)
    estão apontando para o seu banco Postgres local.
    
 
 4. Execute a aplicação:
 
-   npm run dev
+   `npm run dev`
 
    O servidor iniciará em: http://localhost:3333
-
-5. Sugestão de configuração para o .env:
-
-    port_db=Porta_do_db
-    database_db=EasyLink
-    username_db=seu_usuario
-    password_db=sua_senha
+   
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ## 🛣️ Endpoints da API

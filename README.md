@@ -48,7 +48,6 @@ Antes de começar, você vai precisar ter instalado em sua máquina:
 
 4. Execute a aplicação:
 
-   # Para desenvolvimento com auto-reload
    npm run dev
 
    O servidor iniciará em: http://localhost:3333

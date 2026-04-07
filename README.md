@@ -52,9 +52,8 @@ Antes de começar, você vai precisar ter instalado em sua máquina:
 
    O servidor iniciará em: http://localhost:3333
 
-5. Sugestão:
+5. Sugestão de configuração para o .env:
 
-    # Exemplo de configuração do arquivo .env
     port_db=Porta_do_db
     database_db=EasyLink
     username_db=seu_usuario

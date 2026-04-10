@@ -24,6 +24,7 @@ export const LinkRepository = {
         const result = await Link.destroy({
             where: { id }
         }) 
+        return link
     },
     
     async listLinks(){
@@ -35,7 +36,7 @@ export const LinkRepository = {
         const link = await Link.findOne({ where : { shortCode : shortCode } })
         if(link){
             await link.increment('clicks')
-            return link.url
+            return link
         }
         throw new Error("Link não encontrado")
     }

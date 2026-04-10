@@ -3,7 +3,7 @@ import {LinkRepository} from '../repository/LinkRepository.js'
 export const LinkService = {
 
     async createLink(link){
-
+        
         return await LinkRepository.createLink(link)
     },
 

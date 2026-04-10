@@ -4,49 +4,55 @@ import {LinkService} from '../service/LinkService.js'
 export const LinkController = {
     
     async createLink(request,reply){
-        try{
             const link = request.body
             const result = await LinkService.createLink(link)
-            reply.status(201).send(result)
-        }catch(e){
-            reply.status(400).send(e.message)
-        }
+            reply.status(201).send({
+                result: {shortCode:result.shortCode,link:result.url},
+                message: "Encurtador criado com sucesso",
+                statusCode: 201
+            })
+
     },
     async updateLink(request, reply){
-        try{
+        
             const {newShortCode} = request.body
             const id = request.params.id
             const result = await LinkService.updateLink(newShortCode,id)
-            reply.status(200).send(result)
-        }catch(e){
-            reply.status(404).send(e.message)
-        }
+            reply.status(200).send({
+                result: {newShortCode: result.shortCode},
+                message: "shortCode atualizado com sucesso",
+                statusCode: 200
+            })
+        
     },
     async deleteLink(request, reply){
-        try{
+
         const id = request.params.id
-        const result = await LinkService.deleteLink(id)
-        reply.status(200).send(result)
-        }catch(e){
-        reply.status(400).send(e.message)
-        }
+        const link = await LinkService.deleteLink(id)
+        reply.status(200).send({
+                result: {newShortCode: link.dataValues.shortCode, idDeleted: link.dataValues.url},
+                message: "Encurtador apagado com sucesso",
+                statusCode: 200
+            })
+
     },
     async listLinks(request, reply){
-        try{
-            const result = await LinkService.listLinks()
-            reply.status(200).send(result)
-        }catch(e){
-            return reply.status(400).send(e.message)
-        }
+        const result = await LinkService.listLinks()
+        reply.status(200).send({
+                result: {Links: result},
+                message: "Lista de encurtadores ",
+                statusCode: 200
+            })
     },
+
     async accessLink(request,reply){
         const shortCode = request.params.shortCode
-        try{
-            const link = await LinkService.accessLink(shortCode)
-            reply.status(200).send(link)
-        }catch(e){
-            reply.status(404).send(e.message)
-        }
+        const link = await LinkService.accessLink(shortCode)
+        reply.status(200).send({
+                result: {newShortCode: link.url},
+                message: "Encurtador encontrado com sucesso",
+                statusCode: 200
+            })
     }
 
 

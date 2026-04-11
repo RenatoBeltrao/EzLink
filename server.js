@@ -2,6 +2,7 @@ import fastify from 'fastify'
 import {sequelize} from './database/database.js'
 import { appRoutes } from './routes.js';
 import cors from '@fastify/cors'
+import { errorHandler } from './middleware/errorHandler.js';
 
 const server = fastify({ logger: true})
 
@@ -17,6 +18,8 @@ async function testarConexao() {
         await server.register(cors, { 
             origin: ["http://localhost:5500", "http://127.0.0.1:5500"]
         });
+
+        server.setErrorHandler(errorHandler)
 
         //as requisicoes
         appRoutes(server)

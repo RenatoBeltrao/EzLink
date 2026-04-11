@@ -30,7 +30,7 @@ export const LinkController = {
         const id = request.params.id
         const link = await LinkService.deleteLink(id)
         reply.status(200).send({
-                result: {newShortCode: link.dataValues.shortCode, idDeleted: link.dataValues.url},
+                result: {deletedShortCode: link.dataValues.shortCode, deletedId: link.dataValues.url},
                 message: "Encurtador apagado com sucesso",
                 statusCode: 200
             })

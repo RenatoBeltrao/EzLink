@@ -7,13 +7,16 @@ export const LinkRepository = {
     },
     async updateShortCode(newShortCode,id){
         const linkAntigo = await Link.findByPk(id)
-        if(!linkAntigo){
-        throw new Error('Link/id não encontrado.')
-        }
-            await linkAntigo.update(
-            {shortCode: newShortCode}
-        )
+        await linkAntigo.update({shortCode: newShortCode})
         return linkAntigo
+    },
+    async verifyId(id){
+        const linkAntigo = await Link.findByPk(id)
+        return linkAntigo
+    },
+
+    async verifyShortCode(shortCode){
+        return await Link.findOne({where:  {shortCode} })
     },
 
     async deleteLink(id){
